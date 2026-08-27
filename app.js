@@ -240,7 +240,7 @@
   }
   function tourLayer(t, opts = {}) {
     const g = L.featureGroup();
-    const pts = t.stops.filter((s) => !s.optional).map((s) => { const p = P(s.place); return [p.lat, p.lng]; });
+    const pts = t.stops.filter((s) => !s.optional && !s.eat).map((s) => { const p = P(s.place); return [p.lat, p.lng]; });
     L.polyline(pts, { color: getComputedStyle(document.documentElement).getPropertyValue('--' + t.id).trim() || '#fff', weight: opts.mini ? 3 : 4, opacity: .85, lineJoin: 'round', dashArray: null }).addTo(g);
     let n = 0;
     t.stops.forEach((s) => {
