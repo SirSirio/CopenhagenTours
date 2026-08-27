@@ -92,7 +92,8 @@
     const T = DATA.trip;
     const days = T.days.map((d) => `<div class="day${d.star ? ' star' : ''}" style="--c:${C(d.color)}">
         <a href="${d.href}"><div class="d">${esc(d.label)}</div><div class="t">${esc(d.title)}</div><div class="s">${esc(d.sub)}</div></a></div>`).join('');
-    const cards = DATA.tours.map(tourCard).join('');
+    const cards = cityTours().map(tourCard).join('');
+    const lyngby = lyngbyTours().map(tourCard).join('');
     $('#home').innerHTML = `
       <div class="wrap">
         <div class="hero"><div class="hero-grid"></div>
@@ -112,6 +113,11 @@
           <p class="muted" style="margin:-6px 0 16px;font-size:14.5px">${esc(T.tourIntro)}</p>
           <div class="cards">${cards}</div>
         </div>
+        ${lyngby ? `<div class="section">
+          <div class="section-head"><h2>Around Lyngby</h2><a class="more" href="#/tours">DTU's backyard →</a></div>
+          <p class="muted" style="margin:-6px 0 16px;font-size:14.5px">${esc(T.lyngbyIntro || '')}</p>
+          <div class="cards">${lyngby}</div>
+        </div>` : ''}
         <div class="section">
           <div class="section-head"><h2>Eat &amp; drink</h2><a class="more" href="#/eat">Open lists →</a></div>
           <div class="cards three">
@@ -129,8 +135,12 @@
   }
 
   // ---------- TOURS ----------
+  const cityTours = () => DATA.tours.filter((t) => !t.group);
+  const lyngbyTours = () => DATA.tours.filter((t) => t.group === 'lyngby');
+
   function renderTours() {
-    const cards = DATA.tours.map(tourCard).join('');
+    const cards = cityTours().map(tourCard).join('');
+    const lyngby = lyngbyTours().map(tourCard).join('');
     const bonus = DATA.bonus.map((b) => { const p = P(b.place); return `<div class="card place" style="--c:var(--line-2)"><div><h3>${esc(p.name)}</h3><div class="sub">${esc(b.near)}</div><p class="blurb">${esc(p.blurb)}</p><a class="maplink" href="${gmPlace(p)}" target="_blank" rel="noopener">${ICON.pin} Google Maps</a></div></div>`; }).join('');
     const trips = DATA.daytrips.map((d) => `<div class="card" style="--c:var(--line-2)"><div class="card-top"><h3>${esc(d.name)}</h3></div><p class="blurb">${esc(d.blurb)}</p><div class="meta"><span><b>${esc(d.how)}</b></span><span>${esc(d.cost)}</span><span>${esc(d.time)}</span></div>${d.link ? `<a class="maplink" href="${d.link}" target="_blank" rel="noopener" style="margin-top:8px;display:inline-flex;gap:4px;align-items:center;font-family:var(--font-mono);font-size:11.5px;color:var(--muted)">${ICON.pin} Google Maps</a>` : ''}</div>`).join('');
     $('#tours').innerHTML = `
@@ -141,6 +151,12 @@
           <p class="muted" style="margin:10px 0 18px;font-size:15px;max-width:60ch">${esc(DATA.trip.toursPage)}</p>
           <div class="cards">${cards}</div>
         </div>
+        ${lyngby ? `<div class="section">
+          <div class="eyebrow" style="margin-bottom:10px">Around DTU · Kongens Lyngby</div>
+          <div class="section-head"><h2>Lyngby lines</h2><span class="more">nature · food · the coast</span></div>
+          <p class="muted" style="margin:-6px 0 18px;font-size:15px;max-width:60ch">${esc(DATA.trip.lyngbyIntro || '')}</p>
+          <div class="cards">${lyngby}</div>
+        </div>` : ''}
         <div class="section">
           <div class="section-head"><h2>Bonus stops</h2><span class="more">slot into any line</span></div>
           <div class="cards">${bonus}</div>
@@ -203,7 +219,7 @@
         ${tips ? `<div class="section"><div class="section-head"><h2>Good to know</h2></div><ul class="tips">${tips}</ul></div>` : ''}
         <div class="section">
           <div class="section-head"><h2>Other lines</h2></div>
-          <div class="cards">${DATA.tours.filter((x) => x.id !== t.id).slice(0, 2).map(tourCard).join('')}</div>
+          <div class="cards">${DATA.tours.filter((x) => x.id !== t.id && x.group === t.group).slice(0, 2).map(tourCard).join('')}</div>
         </div>
       </div>`;
 
@@ -261,7 +277,7 @@
     L.control.zoom({ position: 'topright' }).addTo(map);
     tiles().addTo(map);
     layers.all = L.featureGroup();
-    DATA.tours.forEach((t) => { layers[t.id] = tourLayer(t); layers[t.id].addTo(layers.all); });
+    DATA.tours.forEach((t) => { layers[t.id] = tourLayer(t); if (!t.group) layers[t.id].addTo(layers.all); }); // "All lines" = the city; Lyngby lines have their own chips
     layers.eat = L.featureGroup(DATA.restaurants.map((r) => { const p = P(r.place); return pin(p, { color: 'eat', label: ICON.fork, glyph: true }).bindPopup(popup(Object.assign({}, p, { blurb: `${r.type} · ${r.priceLabel} · ${p.blurb || ''}` }), 'Eat · ' + r.area, 'eat')); }));
     layers.bars = L.featureGroup(DATA.bars.map((b) => { const p = P(b.place); return pin(p, { color: 'bar', label: '◍', glyph: true }).bindPopup(popup(Object.assign({}, p, { blurb: `${b.beer} · ${p.blurb || ''}` }), 'Bar · ' + b.area, 'bar')); }));
     layers.mon = L.featureGroup(DATA.defence.mapPlaces.map((x, i) => { const p = P(x.place); return pin(p, { color: 'lx', label: x.label || String(i + 1) }).bindPopup(popup(p, 'Mon 28 · ' + x.kicker, 'lx')); }));
