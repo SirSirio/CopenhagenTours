@@ -25,7 +25,7 @@
   const gmPlace = (p) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ', ' + (p.addr || 'Copenhagen'))}`;
   const gmDir = (p) => `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}&travelmode=walking`;
   const gmRoute = (tour) => {
-    const pts = tour.stops.filter((s) => !s.optional).map((s) => P(s.place));
+    const pts = tour.stops.filter((s) => !s.optional && !s.eat).map((s) => P(s.place)); // sights only, like the map line
     if (pts.length < 2) return '#';
     const o = pts[0], d = pts[pts.length - 1];
     let mid = pts.slice(1, -1);
