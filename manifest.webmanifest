@@ -1,0 +1,13 @@
+{
+  "name": "København · Walking Guide",
+  "short_name": "KBH",
+  "description": "Six colour-coded walking tours of Copenhagen, a live map, cheap eats and bars.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0b0e",
+  "theme_color": "#0a0b0e",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
