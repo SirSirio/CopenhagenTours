@@ -1,5 +1,7 @@
 # København · walking guide
 
+**▶ Live site: https://sirsirio.github.io/CopenhagenTours/**
+
 A mobile-first, dark-themed guide to Copenhagen: six colour-coded walking tours ("lines"), an interactive
 map, a sortable list of cheap-but-good restaurants, a list of cheap bars, and a plan for the big day.
 
