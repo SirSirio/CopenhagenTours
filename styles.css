@@ -254,6 +254,16 @@ a.card:hover { border-color: var(--line-2); transform: translateY(-1px); }
   display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 6px 20px rgba(0,0,0,.4);
 }
 .locate svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+/* Timed day plan on a tour page */
+.planbox { border: 1px solid var(--line-2); border-radius: var(--r); background: var(--surface); overflow: hidden; }
+.planrow { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--line-2); }
+.planrow:last-child { border-bottom: 0; }
+.planrow .pt { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--c); padding-top: 2px; }
+.planrow .px { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+.planrow .px b { color: var(--text); font-weight: 600; }
+.planrow.star { background: color-mix(in srgb, var(--c) 8%, transparent); }
+.planrow.star .px { color: var(--text); }
+
 .leaflet-container { font-family: var(--font-sans); background: #0e1014; }
 /* Dark map from standard OSM tiles: invert + hue-rotate keeps water blue-ish and roads readable */
 .leaflet-tile-pane { filter: invert(1) hue-rotate(190deg) saturate(.55) brightness(.82) contrast(1.05); }

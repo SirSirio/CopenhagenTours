@@ -1,6 +1,6 @@
 /* Network-first service worker: the site opens offline (map tiles still need network).
    Bump VERSION whenever you change data.js / app.js / styles.css. */
-const VERSION = 'kbh-v2';
+const VERSION = 'kbh-v3';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './data.js', './favicon.svg', './manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {

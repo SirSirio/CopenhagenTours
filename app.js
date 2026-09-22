@@ -211,6 +211,10 @@
           </div>
           <div class="minimap" id="minimap"></div>
         </div>
+        ${t.plan ? `<div class="section">
+          <div class="section-head"><h2>${esc(t.planTitle || 'The plan')}</h2><span class="more">timed &amp; booked</span></div>
+          <div class="planbox" style="--c:${C(t.id)}">${t.plan.map((r) => `<div class="planrow${r.star ? ' star' : ''}"><span class="pt">${esc(r.time)}</span><div class="px">${r.text}</div></div>`).join('')}</div>
+        </div>` : ''}
         <div class="section">
           <div class="section-head"><h2>Stops</h2><span class="more">${n} stops · ${esc(t.km)}</span></div>
           <p class="muted" style="margin:-6px 0 14px;font-size:14px">${esc(t.pace)}</p>
