@@ -6,26 +6,15 @@ const DATA = {
 
   // ---------------------------------------------------------------- TRIP ----
   trip: {
-    edition: "Family edition",
+    edition: "Walking guide",
     city: "København",
-    dates: "26–28 Sep 2026",
-    tag: "26–28 SEP 2026",
-    who: "the family",
-    intro: "Three days on foot. <b>Six lines</b> to choose from, one <b>Master's defence</b> to celebrate.",
-    lyngbyIntro: "Two lines that start at the DTU campus: lakes, an open-air museum and the mill stream in 2–3 hours, or the royal deer park and the coast in half a day. Both work as the morning before the defence or as a slow day for whoever's up early.",
+    dates: "Copenhagen on foot",
+    tag: "WALKING GUIDE",
+    intro: "<b>Six lines</b> through the city, <b>two more</b> around Lyngby — and where to eat and drink without spending a fortune.",
+    lyngbyIntro: "Two lines that start at the DTU campus: lakes, an open-air museum and the mill stream in 2–3 hours, or the royal deer park and the coast in half a day.",
     tourIntro: "Each line is a self-contained half-day walk with coffee, lunch and sit-downs built in. Pick by mood; they all pass the big sights.",
     toursPage: "Every line is walkable at a relaxed pace (5–6 km, lots of stops). Distances are honest, times are generous. Mix and match: Line 3 in the morning and Line 2 after lunch is a classic full day.",
-    days: [
-      { label: "Sat 26", title: "Land 19:50 · Nyhavn by night", sub: "Tivoli Food Hall smørrebrød · Kissing Bridge", color: "l1", href: "#/tour/l1" },
-      { label: "Sun 27", title: "Tower ★ & GoBoat", sub: "10:30 tower · Christiania · Ravelinen · 16:00 boat", color: "l2", href: "#/tour/l2" },
-      { label: "Mon 28", title: "Defence day ★", sub: "13:00 DTU · celebrate · fly 19:00", color: "lx", href: "#/defence", star: true },
-    ],
-    bigDay: {
-      label: "Mon 28 Sep · 13:00 · DTU Lyngby",
-      title: "Master's defence day",
-      sub: "how to get there, where to celebrate afterwards, and how to make the 19:00 flight.",
-    },
-    footer: "Built for the September 2026 visit · reusable for the next one (see README) · Prices are rough, opening hours change — tap “Google Maps” on any place to check live hours before you walk.",
+    footer: "Prices are rough, opening hours change — tap “Google Maps” on any place to check live hours before you walk.",
   },
 
   // -------------------------------------------------------------- PLACES ----
@@ -108,7 +97,7 @@ const DATA = {
     "copenhill": { name: "CopenHill (Amager Bakke)", lat: 55.68487, lng: 12.62110, kind: "sight", blurb: "A waste-to-energy plant with a ski slope on the roof. Hike the trail to the top for free; views to Sweden and over the whole harbour.", tip: "Take the elevator up and walk down, or hike the zig-zag trail. The rooftop bar sells beer; skiing and climbing are the only paid bits.", time: "45 min", cost: "Free (roof)", hours: "Mon–Fri 11–19, Sat 10–19, Sun 10–17" },
     "nordre-toldbod": { name: "Nordre Toldbod harbour-bus stop", lat: 55.68962, lng: 12.59891, kind: "transit", blurb: "Harbour bus back from Refshaleøen lands here, 5 minutes from Kastellet and the Little Mermaid.", cost: "24 kr" },
 
-    // Sunday & evening restaurants (family weekend)
+    // More traditional Danish restaurants
     "ravelinen": { name: "Restaurant Ravelinen", lat: 55.67025, lng: 12.59566, kind: "food", addr: "Torvegade 79", blurb: "Classic Danish lunch in an 1878 guardhouse on the old rampart moat, 200 m from Christiania's gate — herring, smørrebrød, frikadeller, terrace over the water.", hours: "Lunch Tue–Sun 11:30 (last seating 14:30) · dinner Tue–Sat" },
     "christianshavns-faergecafe": { name: "Christianshavns Færgecafé", lat: 55.67550, lng: 12.59248, kind: "food", addr: "Strandgade 50", blurb: "The old ferry café: sanded floors, ship lamps and legendary curry herring. The cosiest lunch room on Christianshavn.", hours: "Sun 11:30–15:30 & 17:30–20; book weekends" },
     "axelborg-bodega": { name: "Axelborg Bodega", lat: 55.67539, lng: 12.56446, kind: "food", addr: "Axeltorv 1", blurb: "Proper bodega by Vesterport famous for all-you-can-eat stegt flæsk — and free live jazz on Sundays 17–20. Five minutes from the hotel.", hours: "Daily, kitchen 11–21" },
@@ -117,8 +106,6 @@ const DATA = {
 
     "tivoli-food-hall": { name: "Tivoli Food Hall", lat: 55.67395, lng: 12.56525, kind: "food", addr: "Bernstorffsgade 3", blurb: "Fifteen stalls under one roof by the station — including a Danish smørrebrød counter — with its own street door, so no park ticket is needed. Open all year.", hours: "Daily from 11, till 22 Fri–Sat" },
 
-    // Family logistics
-    "meininger-hotel": { name: "MEININGER Hotel (home base)", lat: 55.67224, lng: 12.56230, kind: "sight", addr: "Colbjørnsensgade 11", blurb: "The family's hotel: the Vesterbro side of Central Station — 4 minutes from the trains, 6 from Tivoli's gates, Istedgade on the corner. Reception stores bags on departure day.", cost: "" },
     "goboat": { name: "GoBoat (Islands Brygge)", lat: 55.66911, lng: 12.57856, kind: "sight", addr: "Islands Brygge 10", blurb: "Drive-your-own electric picnic boat: no licence needed, a table in the middle, seats 8. One hour does the Christianshavn canal loop or the harbour up to Nyhavn and back at pottering speed.", tip: "Book a slot at goboat.dk. One person over 18 is 'captain'; bring your own drinks and snacks for the table.", time: "60 min + 15 min check-in", cost: "≈500 kr per boat / 1 h", hours: "Daily from 10:00" },
 
     // Bonus / other sights
@@ -193,8 +180,8 @@ const DATA = {
     "norrebro-bryghus": { name: "Nørrebro Bryghus", lat: 55.69025, lng: 12.56397, kind: "bar", addr: "Ryesgade 3", blurb: "Copenhagen's first brewpub (2003), by the Lakes. Happy hour before 18:00." },
     "orsted-olbar": { name: "Ørsted Ølbar", lat: 55.68139, lng: 12.56457, kind: "bar", addr: "Nørre Farimagsgade 13", blurb: "Small craft bar on a quiet street by Ørstedsparken; comfy, cheap-ish for craft." },
 
-    // Defence day
-    "dtu-building-101": { name: "DTU Lyngby · Building 101", lat: 55.78585, lng: 12.52144, kind: "sight", addr: "Anker Engelunds Vej 1, Kongens Lyngby", blurb: "Main building of the DTU campus — the defence room is nearby. Change the building in data.js if it's elsewhere.", cost: "" },
+    // DTU & getting home
+    "dtu-building-101": { name: "DTU Lyngby · Building 101", lat: 55.78585, lng: 12.52144, kind: "sight", addr: "Anker Engelunds Vej 1, Kongens Lyngby", blurb: "Main building of the DTU campus in Lyngby — where both Lyngby lines start.", cost: "" },
     "dtu-bus-stop": { name: "Rævehøjvej (DTU) bus stop", lat: 55.78765, lng: 12.53148, kind: "transit", addr: "Rævehøjvej, Kongens Lyngby", blurb: "15E and 150S stop on the motorway edge of campus, 8 minutes' walk from Building 101.", cost: "≈30–38 kr to Nørreport" },
     "lyngby-station": { name: "Lyngby Station", lat: 55.76803, lng: 12.50478, kind: "transit", blurb: "S-train to Nørreport (≈18 min). Bus 300S/ 30E link campus and the station.", cost: "" },
     "airport": { name: "Copenhagen Airport (Lufthavnen metro)", lat: 55.63091, lng: 12.64922, kind: "transit", addr: "Terminal 3, Kastrup", blurb: "Metro M2 arrives straight into Terminal 3. From Kongens Nytorv 15 min, from Nørreport 17 min, trains run every 4–6 min.", cost: "30 kr (3 zones)" },
@@ -208,7 +195,7 @@ const DATA = {
 
     // Lyngby · Line 7 (short)
     "brede-vaerk": { name: "Brede Værk", lat: 55.79525, lng: 12.49878, kind: "sight", addr: "I.C. Modewegs Vej, Kgs. Lyngby", blurb: "Denmark's best-preserved industrial village: a 19th-century cloth mill on the Mølleåen with workers' terraces, the owner's mansion and the mill pond. The 'cradle of Danish industry' stretch of the stream starts here.", time: "15 min", cost: "Free (outside)" },
-    "frilandsmuseet": { name: "Frilandsmuseet (Open Air Museum)", lat: 55.78816, lng: 12.49433, kind: "sight", addr: "Kongevejen 100, Kgs. Lyngby", blurb: "Part of the National Museum: 50+ farmhouses, mills and cottages from all over Denmark rebuilt on 40 hectares, with old animal breeds, gardens and horse carriages at weekends. A whole country's countryside in one walk.", tip: "The north entrance at Brede is the one you reach from DTU; the main gate is on Kongevejen. Buy online (135 kr instead of 150). Closed Mondays — on defence day this line becomes the lake walk.", time: "75–90 min", cost: "150 kr · under 18 free", hours: "Tue–Sun 10–16 (Sept), closed Mon" },
+    "frilandsmuseet": { name: "Frilandsmuseet (Open Air Museum)", lat: 55.78816, lng: 12.49433, kind: "sight", addr: "Kongevejen 100, Kgs. Lyngby", blurb: "Part of the National Museum: 50+ farmhouses, mills and cottages from all over Denmark rebuilt on 40 hectares, with old animal breeds, gardens and horse carriages at weekends. A whole country's countryside in one walk.", tip: "The north entrance at Brede is the one you reach from DTU; the main gate is on Kongevejen. Buy online (135 kr instead of 150). Closed Mondays — then this line becomes the lake walk.", time: "75–90 min", cost: "150 kr · under 18 free", hours: "Tue–Sun 10–16 (Sept), closed Mon" },
     "brede-spisehus": { name: "Brede Spisehus", lat: 55.79417, lng: 12.50047, kind: "food", addr: "I.C. Modewegs Vej 40, Kgs. Lyngby", blurb: "Country restaurant in the old mill village: Danish lunch classics, a garden by the stream, families on Sundays.", hours: "Tue–Sat 11:30–23, Sun 11:30–15, closed Mon" },
     "sorgenfri-slot": { name: "Sorgenfri Palace garden", lat: 55.77876, lng: 12.49711, kind: "sight", addr: "Kongevejen, Kgs. Lyngby", blurb: "18th-century royal summer residence on the Mølleåen. The palace is closed, but the romantic garden along the stream — bridges, old trees, the water — is open by day and rarely has anyone in it.", time: "20 min", cost: "Free", hours: "Garden daytime" },
     "lyngby-so": { name: "Lyngby Sø", lat: 55.77520, lng: 12.49300, kind: "sight", addr: "Lyngby Sø, Kgs. Lyngby", blurb: "Lyngby's lake: rowing club, reeds, swans, a 4-km path all the way round if you have the time. The Mølleåen path from Sorgenfri drops you on its east shore.", time: "20 min", cost: "Free" },
@@ -216,8 +203,8 @@ const DATA = {
     "sophienholm": { name: "Sophienholm", lat: 55.77539, lng: 12.45761, kind: "sight", addr: "Nybrovej 401, Kgs. Lyngby", blurb: "Neoclassical manor on Bagsværd Lake with an art hall and a café on the lake terrace; the park is free. The boat from Lyngby lands right here.", time: "45 min", cost: "Park free · exhibitions ≈75 kr", hours: "Tue–Thu 11–20, Fri–Sun 11–17, closed Mon" },
     "lyngby-kirke": { name: "Lyngby Kirke", lat: 55.77348, lng: 12.50027, kind: "sight", addr: "Lyngby Hovedgade, Kgs. Lyngby", blurb: "Whitewashed medieval village church (1100s) where the high street meets the lake — the oldest thing in Lyngby, with a churchyard worth two minutes.", time: "10 min", cost: "Free" },
     "emmerys-lyngby": { name: "Emmerys Lyngby", lat: 55.77177, lng: 12.50159, kind: "food", addr: "Lyngby Hovedgade 29, Kgs. Lyngby", blurb: "Organic bakery-café on the high street: cardamom buns, sourdough, decent coffee, seats outside.", hours: "Daily ≈07–18" },
-    "lagkagehuset-lyngby": { name: "Lagkagehuset Lyngby", lat: 55.77016, lng: 12.50424, kind: "food", addr: "Lyngby Hovedgade 63, Kgs. Lyngby", blurb: "The bakery chain's Lyngby shop: kanelsnegle, tebirkes, cakes big enough for a defence.", hours: "Daily ≈06:30–18" },
-    "lyngby-storcenter": { name: "Lyngby Storcenter", lat: 55.77183, lng: 12.50607, kind: "sight", addr: "Klampenborgvej 232, Kgs. Lyngby", blurb: "The mall by the station. Not a sight — but the Meny supermarket inside is where the defence-day cake and bubbles come from.", time: "15 min", cost: "Free", hours: "Daily ≈10–19/20" },
+    "lagkagehuset-lyngby": { name: "Lagkagehuset Lyngby", lat: 55.77016, lng: 12.50424, kind: "food", addr: "Lyngby Hovedgade 63, Kgs. Lyngby", blurb: "The bakery chain's Lyngby shop: kanelsnegle, tebirkes, cakes big enough for a celebration.", hours: "Daily ≈06:30–18" },
+    "lyngby-storcenter": { name: "Lyngby Storcenter", lat: 55.77183, lng: 12.50607, kind: "sight", addr: "Klampenborgvej 232, Kgs. Lyngby", blurb: "The mall by the station. Not a sight — but the Meny supermarket inside is the place for picnic supplies.", time: "15 min", cost: "Free", hours: "Daily ≈10–19/20" },
     "dtu-skylab": { name: "DTU Skylab", lat: 55.78177, lng: 12.51291, kind: "sight", addr: "Diplomvej 381, Kgs. Lyngby", blurb: "DTU's student innovation hub: glass, workshops, prototypes in the windows. The campus building worth walking past.", time: "10 min", cost: "Free" },
 
     // Lyngby · Line 8 (half day)
@@ -240,18 +227,6 @@ const DATA = {
       id: "l1", num: 1, colorName: "Red line", name: "The Postcard", short: "Postcard",
       tagline: "Nyhavn, the palaces, the fortress and the Mermaid. Every picture you've seen of Copenhagen, in one gentle loop along the water.",
       km: "4.5 km", hours: "4–5 h", budget: "0–150 kr", best: "First day", startEnd: "Kongens Nytorv → Østerport",
-      planTitle: "Saturday 26 · arrival night",
-      plan: [
-        { time: "19:50", text: "Land at Copenhagen Airport. With checked bags, expect to be out around 20:15–20:25." },
-        { time: "20:30", text: "<b>Train from Terminal 3 to København H</b> — 13 minutes, every ~10, 30 kr (3 zones) in the Rejsebillet app or at the machines." },
-        { time: "20:50", text: "Drop the bags at <b>MEININGER</b> (Colbjørnsensgade 11, 4 minutes from the station). If the train gets in after ≈21:10, go straight to the Food Hall with the bags — it's across the road from the station — and check in after." },
-        { time: "21:00", star: true, text: "<b>Smørrebrød at Tivoli Food Hall</b> — street door on Bernstorffsgade, no park ticket needed. The hall closes at 22:00 on Saturdays and single stalls may stop earlier, so <b>order the smørrebrød first</b>." },
-        { time: "21:50", text: "Metro <b>M3 from København H to Kongens Nytorv</b> — 4 stops, 6 minutes. (Strøget on foot is 25 minutes, if anyone still has legs.)" },
-        { time: "22:00", star: true, text: "<b>Nyhavn at night</b> — the coloured houses lit up, the quay still busy on a Saturday. A kiosk beer with legs over the edge is the local move." },
-        { time: "22:20", text: "<b>Inderhavnsbroen</b> (the Kissing Bridge), 3 minutes on: the best night view back at Nyhavn, the Opera lit across the water." },
-        { time: "22:35", text: "Optional, if energy allows: <b>Amalienborg lit up</b>, 7 minutes further — the palace square nearly empty, guards on duty." },
-        { time: "22:45", text: "Metro M3 back to København H (it runs all night). Early start tomorrow: the tower is at 10:30." },
-      ],
       pace: "Flat, mostly car-free. Lunch at the harbour end of Nyhavn after the guard change, then the green stretch north.",
       stops: [
         { place: "kongens-nytorv", note: "Start at the metro exit. Look at the equestrian statue, the theatre, and the world's most photographed hotel front, then walk into Nyhavn." },
@@ -276,21 +251,7 @@ const DATA = {
     {
       id: "l2", num: 2, colorName: "Cyan line", name: "Harbour & Christianshavn", short: "Harbour",
       tagline: "Power, parliament and a free tower, then across the bridge to canals, a corkscrew spire and the freetown.",
-      km: "5 km", hours: "4.5–5.5 h", budget: "0–200 kr", best: "Sunday (tower booked 10:30)", startEnd: "Gammel Strand → Nyhavn",
-      planTitle: "Sunday 27 · the family plan",
-      plan: [
-        { time: "09:00", text: "Leave the hotel on foot (after last night's late arrival, 09:30 still works — just skip the courtyard detour). First landmark 10 minutes away: <b>Rådhuspladsen</b> — City Hall, the dragon fountain, Hans Christian Andersen looking at Tivoli." },
-        { time: "09:20", text: "<b>Christiansborg</b>: walk through the riding-ground courtyard (free) — parliament, the royal stables, the Marble Bridge. Then <b>Børsen</b>'s spire of four twisted dragon tails, and over the copper-green <b>Knippelsbro</b>." },
-        { time: "09:45", text: "<b>Christianshavn canals</b> on the way — 'little Amsterdam': Overgaden along the water, houseboats, 17th-century warehouses. Kanelsnegl at the original <b>Lagkagehuset</b> (Torvegade 45)." },
-        { time: "10:30", star: true, text: "<b>Church of Our Saviour tower — booked.</b> Be there 10:15. 400 steps, the last 150 outside on the golden corkscrew. ~45 min. In strong wind they pause entries — watch the booking email that morning." },
-        { time: "11:20", text: "<b>Freetown Christiania</b> — in from Prinsessegade, 3 minutes from the church. Murals, the lake, Nemoland's garden; Sunday is its calmest day. No photos in the central area. Walk right through and leave by the <b>rampart path south</b> along the moat." },
-        { time: "12:30", star: true, text: "<b>Lunch at Ravelinen — booked ✓.</b> The 1878 guardhouse on the moat, where the rampart path meets Torvegade. Herring, smørrebrød, frikadeller." },
-        { time: "14:00", text: "Metro <b>M1</b> one stop, Christianshavn → Gammel Strand (or 15 minutes on foot over Knippelsbro). <b>Christiansborg Tower</b>: free, the highest view in the city, open Sundays until 17:30. Expect a short security queue." },
-        { time: "15:15", text: "Walk past the <b>Black Diamond</b> — step into the granite atrium — and over <b>Langebro</b> to Islands Brygge. GoBoat check-in is 15 minutes before." },
-        { time: "16:00", star: true, text: "<b>GoBoat, 1 hour — book this slot</b> at goboat.dk (Islands Brygge 10). ≈500 kr per boat, seats 8, no licence, free cancellation up to 72 h before. Christianshavn canal loop <i>or</i> the harbour to the Black Diamond and back — pick one. Bring drinks for the table." },
-        { time: "17:15", text: "Metro M1 Islands Brygge → <b>Kongens Nytorv</b> (2 stops). Stroll <b>Amagertorv & the Stork Fountain</b>, then up Købmagergade to <b>Rosenborg Castle and the King's Garden</b> at golden hour (sunset ≈18:50)." },
-        { time: "19:00", star: true, text: "<b>Dinner at Axelborg Bodega</b> (Axeltorv 1) — the proper bodega: all-you-can-eat stegt flæsk with parsley sauce, frikadeller, cold beer, and <b>free live jazz on Sundays until 20:00</b>. Book a table. From Rosenborg: S-train Nørreport → Vesterport (2 min) or a 20-minute walk. The hotel is 5 minutes away." },
-      ],
+      km: "5 km", hours: "4.5–5.5 h", budget: "0–200 kr", best: "Weekend (book the tower)", startEnd: "Gammel Strand → Nyhavn",
       pace: "One climb (the spire, optional). Lots of benches by the water. Christiania is the wildcard — give it an hour.",
       stops: [
         { place: "gammel-strand", note: "Start at the metro exit by the canal. The view across to Christiansborg is the opener." },
@@ -303,17 +264,17 @@ const DATA = {
         { place: "our-saviour", minutes: 45, note: "Climb it if the weather's calm and nobody minds heights. Otherwise the church is free and worth five minutes." },
         { place: "christiania-main", minutes: 60 },
         { place: "morgenstedet", eat: true, optional: true, note: "Cheap vegetarian lunch inside Christiania (closed Mondays).", tip: "Nemoland, next door, is the cheap-beer garden." },
-        { place: "ravelinen", eat: true, note: "Sunday 12:30, booked: walk through Christiania and out along the rampart path south — Ravelinen sits on the moat where it meets Torvegade." },
+        { place: "ravelinen", eat: true, note: "Lunch 200 m from Christiania: leave by the rampart path south — Ravelinen sits on the moat where it meets Torvegade. Book at weekends." },
         { place: "broens-gadekokken", eat: true, note: "Street-food stalls on the quay — late lunch or an early dinner, with a beer on the edge of the water." },
-        { place: "goboat", optional: true, note: "Sunday 16:00: the family's 1-hour boat. From Christiansborg it's a 20-minute walk past the Black Diamond and over Langebro; check in 15 minutes before." },
+        { place: "goboat", optional: true, note: "Drive your own electric picnic boat for an hour — the Christianshavn canal loop is the perfect length. 20 minutes' walk from Christiansborg over Langebro; check in 15 minutes before." },
         { place: "inderhavnsbroen", minutes: 10, note: "Cross the Kissing Bridge back to Nyhavn: the best angle on the coloured houses is from this side." },
         { place: "nyhavn", note: "End. Kongens Nytorv metro is 3 minutes away." },
       ],
       tips: [
         "<b>Extend it:</b> from the Black Diamond, walk 12 minutes south to Islands Brygge harbour bath and Kalvebod Bølge before crossing Knippelsbro.",
         "<b>Christiania rules:</b> no photos in the central Green Light District, no running (it startles people), cash helps. The rest of Christiania is relaxed and family-friendly.",
-        "<b>Bookings:</b> tower 10:30 ✓ · Ravelinen 12:30 ✓ · still to book: <b>GoBoat 16:00</b> at goboat.dk (free cancellation up to 72 h before) and <b>Axelborg Bodega 19:00</b>. The tower's outdoor stairs close in strong wind — watch the booking email that morning.",
-        "<b>Dinner backups</b> if Axelborg is full: Københavner Caféen (cosy red cellar, daily till 22) or Restaurant Puk (1750 cellar, dinner till 22).",
+        "<b>Book ahead:</b> the Our Saviour tower (timed slots online; the outdoor stairs close in strong wind), GoBoat at goboat.dk (free cancellation up to 72 h before), and Ravelinen at weekends.",
+        "<b>Cosy Danish dinner after:</b> Axelborg Bodega (stegt flæsk, free jazz on Sundays), Københavner Caféen (red cellar, daily till 22) or Restaurant Puk (1750 cellar).",
         "<b>Sunday note:</b> Christiansborg's tower closes at 17:30 on Sundays and is closed Mondays — the Sunday plan only walks past; climb it Saturday if you want it.",
       ],
     },
@@ -432,11 +393,10 @@ const DATA = {
         { place: "sophienholm", optional: true, note: "Only if you took the boat: café on the lake terrace, park, art if there's a show on." },
         { place: "lyngby-kirke", minutes: 10 },
         { place: "emmerys-lyngby", eat: true, note: "Coffee and a cardamom bun on Lyngby Hovedgade. Lagkagehuset is 200 m further for cake." },
-        { place: "lyngby-storcenter", minutes: 15, note: "If it's defence day: the Meny supermarket here is where the cake and bubbles come from." },
+        { place: "lyngby-storcenter", minutes: 15, note: "The mall by the station — the Meny supermarket inside is handy for picnic supplies." },
         { place: "lyngby-station", transit: true, note: "End. Bus 300S/30E (10 min) or 190 back up to DTU; S-train B/E to Nørreport in 20 minutes." },
       ],
       tips: [
-        "<b>Defence-day version:</b> bus up at 09:00, skip the museum (closed Mondays), do Brede → Sorgenfri → lake → Hovedgade, buy the cake, bus 300S into campus by 12:30.",
         "<b>Frilandsmuseet</b> is 150 kr (135 online); horse-carriage rides and the working windmill are weekend things. Under 18 free.",
         "<b>Getting to DTU from town:</b> bus 15E/150S from Nørreport to Rævehøjvej (≈22–30 min), or S-train to Lyngby + bus 300S/30E (≈30 min).",
       ],
@@ -543,7 +503,7 @@ const DATA = {
     { place: "det-lille-apotek", type: "Traditional Danish", area: "Indre By", price: 2, avg: 250, priceLabel: "≈200–300 kr", tryThis: "Roast duck, or the 'Apothecary stew'", hours: "Daily, kitchen 11:30–16:30 & 17:30–21", flag: "Book" },
     // Lyngby & the north
     { place: "emmerys-lyngby", type: "Bakery / café", area: "Lyngby & north", price: 1, avg: 60, priceLabel: "≈40–90 kr", tryThis: "Cardamom bun and a filter coffee; the rye sandwiches at lunch", hours: "Daily ≈07–18" },
-    { place: "lagkagehuset-lyngby", type: "Bakery", area: "Lyngby & north", price: 1, avg: 45, priceLabel: "≈35–55 kr", tryThis: "Kanelsnegl — or a whole layer cake for the defence", hours: "Daily ≈06:30–18" },
+    { place: "lagkagehuset-lyngby", type: "Bakery", area: "Lyngby & north", price: 1, avg: 45, priceLabel: "≈35–55 kr", tryThis: "Kanelsnegl — or a whole layer cake for a celebration", hours: "Daily ≈06:30–18" },
     { place: "sophienholm", type: "Café", area: "Lyngby & north", price: 2, avg: 120, priceLabel: "≈80–150 kr", tryThis: "Cake and coffee on the lake terrace", hours: "Tue–Thu 11–20, Fri–Sun 11–17", flag: "Mon closed" },
     { place: "brede-spisehus", type: "Traditional Danish", area: "Lyngby & north", price: 2, avg: 220, priceLabel: "≈180–280 kr", tryThis: "The lunch platter (frokostplatte) or stegt flæsk, in the garden by the stream", hours: "Tue–Sat 11:30–23, Sun 11:30–15", flag: "Mon closed" },
     { place: "peter-lieps-hus", type: "Smørrebrød", area: "Lyngby & north", price: 3, avg: 350, priceLabel: "≈250–450 kr", tryThis: "The four-piece smørrebrød menu; game dishes from the park in autumn", hours: "Wed–Sun 11:30–17 (kitchen 15:30)", flag: "Mon–Tue closed" },
@@ -605,59 +565,6 @@ const DATA = {
     { name: "Flødeboller", say: "flur-the-boller", what: "Chocolate-coated marshmallow domes on a marzipan base. Summerbird in Torvehallerne does the posh version.", where: "Torvehallerne, any supermarket" },
     { name: "Hygge", say: "hoo-ga", what: "Not food — the mood: candles, a table, nobody in a hurry. Order a second coffee and you're doing it.", where: "Any bodega after 21:00" },
   ],
-
-  // ------------------------------------------------------- DEFENCE DAY ----
-  defence: {
-    kicker: "Monday 28 September · the big day",
-    title: "Defence day",
-    intro: "Defence at <b>13:00 at DTU Lyngby</b>, flight at <b>19:00</b>, bags waiting at MEININGER by Central Station. The family does the morning on their own in the Old Town, comes up by bus for 13:00, and the one real window to celebrate is a late lunch between 15:45 and 16:45 — then bags and the airport train. Here's the schedule that makes it work.",
-    building: "Building 101 (change in data.js if the room is elsewhere)",
-    timeline: [
-      { time: "08:30", title: "Breakfast, check out, dump the bags", text: "Check out of MEININGER and <b>leave the suitcases with reception</b> — the hotel is 4 minutes from Central Station, and you'll swing back for them at 17:00 on the way to the airport. No dragging luggage through the defence.", facts: "Breakfast: the hotel, or Mad & Kaffe on Sønder Boulevard (10 min)" },
-      { time: "09:15", title: "Family on their own: the Old Town hour", text: "Sirio is at DTU prepping, so this bit is yours: walk up to Rådhuspladsen (10 min from the hotel), along <b>Strøget</b> to Gammeltorv, through the Latin Quarter to the <b>Round Tower</b> — it opens at 10:00 and is one of the few sights open on a Monday (60 kr, no stairs, a spiral ramp). Down via pretty <b>Gråbrødretorv</b>, coffee at Torvehallerne, then the <b>Rosenborg barracks at 11:25</b>: the Royal Guard marches out at <b>11:30</b> for the 12:00 changing of the guard — watch them set off down Gothersgade, 5 minutes from the bus stops.", facts: "Museums are closed Mondays — the tower isn't · everything here is a 5-min walk apart" },
-      { time: "11:45", title: "Nørreport → DTU (on your own)", text: "Bus <b>15E</b> (fastest, ≈22 min) or <b>150S</b> (≈30 min) from the Nørreport bus stops on Nørre Voldgade, direction Lyngby/DTU. Get off at <b>Rævehøjvej (DTU)</b>. Buy tickets in the Rejsebillet app before boarding. <b>Text Sirio from the bus</b> — you'll be met at the stop; if not, the map pin walks you there in 8 minutes.", facts: "≈30–38 kr per person · check the next departure in Rejseplanen" },
-      { time: "12:10", title: "Walk into campus", text: "Eight minutes from the bus stop along Anker Engelunds Vej to the defence building. Time for a coffee in the canteen and finding the room.", facts: "DTU is huge and flat — the map has the pin" },
-      { time: "13:00", title: "The defence", text: "A DTU Master's defence: about 30 minutes of presentation, then 30–60 minutes of questions from the supervisor and the external examiner (the <i>censor</i>), then everyone except the candidate leaves the room for a few minutes while they agree the grade. Phones off, sit where you can see the slides, and don't worry when the questions sound tough — that's the format.", hi: true, facts: "Usually 1–1.5 h in total · family is welcome in the room" },
-      { time: "≈14:30", title: "Cake in the corridor", text: "There's no official reception for a Master's defence — the party is whatever you bring. A cake and a bottle of something (Lyngby Storcenter is 10 min away, the DTU canteen sells cake) does the job; department kitchenettes have plates. This is the hug moment. Keep it to 30 minutes if you want the city lunch.", facts: "'Tillykke!' = congratulations" },
-      { time: "15:00", title: "DTU → Nørreport", text: "Back to Rævehøjvej, bus 15E or 150S southbound. From Nørreport it's an 8-minute walk to Schønnemann or one metro stop (M1/M2) to Kongens Nytorv for the other options.", facts: "≈25 min · ≈30–38 kr" },
-      { time: "15:45", title: "Celebration lunch", text: "See the options below. Book a table for 15:45 <b>and tell them you'll be leaving by 17:00</b> — Danish kitchens close the lunch service around 16:00, so this only works with a reservation. If the defence overruns, Option D (Hviids, kitchen all day) is the safe fallback.", hi: true },
-      { time: "16:45", title: "Bags, then the airport", text: "Get to <b>Central Station</b>: S-train from Nørreport (2 minutes, any letter) if you ate at Schønnemann/Aamanns/Sorgenfri, or metro M3 from Kongens Nytorv if you ate at Hviids. Grab the bags at MEININGER (4-minute walk from the station), then <b>any train from Central Station to the airport</b> — 13 minutes, every ~10, straight into Terminal 3. There by ≈17:45; leave lunch at 16:30 instead if you have bags to check.", facts: "30 kr per person (3 zones) · Rejsebillet app" },
-      { time: "19:00", title: "Flight", text: "Skål from the ground." },
-    ],
-    celebrateIntro: "The awkward truth: 16:00 on a Monday is the gap between Danish lunch and dinner. These are the places that work for a proper celebratory meal in that window — book ahead and mention the time.",
-    options: [
-      { place: "schonnemann", tag: "Option A · the classic", rec: true, text: "The smørrebrød institution since 1877: herring, plaice, tartare, 140 kinds of snaps, chefs from Noma at the next table. Open Mondays until 17:00 — <b>call and book for 15:45–16:00</b> and confirm they'll seat you that late. Eight minutes from the Nørreport bus stop.", price: "≈300–450 kr pp", hours: "Mon–Sat 11:30–17:00", toAirport: "S-train → Central for the bags, train to T3", book: "https://www.google.com/maps/search/?api=1&query=Restaurant%20Sch%C3%B8nnemann%20Hauser%20Plads%2016" },
-      { place: "aamanns-1921", tag: "Option B · modern", text: "Smørrebrød reinvented, Michelin-listed, a grand 1921 bank room. Lunch runs to 17:00 with last orders at 16:00, so this one needs you at the table by 15:50 sharp — or book the 17:30 dinner sitting if the flight can take it (it can't, realistically). Five minutes from Nørreport.", price: "≈250–400 kr pp", hours: "Lunch daily 11:30–17 (last order 16:00)", toAirport: "S-train → Central for the bags, train to T3", book: "https://aamanns.dk/en/restaurant/aamanns-1921/" },
-      { place: "cafe-sorgenfri", tag: "Option C · the bodega", text: "The bodega-restaurant: stegt flæsk, frikadeller, herring, cold beer, wood panels. Not fancy, extremely Danish — but it's a lunch place, so <b>call first</b> to check they'll still feed you at 15:45 on a Monday.", price: "≈150–230 kr pp", hours: "Lunch only — call to confirm", toAirport: "Walk 13 min to Central for the bags, train to T3" },
-      { place: "hviids-vinstue", tag: "Option D · by the metro", text: "Copenhagen's oldest bar (1723) with a proper kitchen all day — smørrebrød, a plate of the day, and the celebration beer. Two minutes from the Kongens Nytorv metro entrance, so the airport dash is the shortest of all.", price: "≈150–250 kr pp", hours: "Daily 11–24", toAirport: "M3 to Central for the bags, train to T3" },
-    ],
-    morning: [
-      "<b>The default (in the timeline above):</b> Strøget → Cathedral → Round Tower → Gråbrødretorv → Torvehallerne → the guards marching out of Rosenborg at 11:30 — all open on Mondays, and it ends 5 minutes from the bus stop.",
-      "<b>Rainy version:</b> straight up Strøget to Illum's rooftop terrace (free, opens 10:00), browse the department store, bus at 11:15. Or simply a long hotel breakfast.",
-      "<b>Green version:</b> S-train from Central Station to Nørreport early, then the King's Garden and the Botanical Garden's Palm House (opens 10:00) — free, open Mondays, 5 minutes from the bus stop.",
-      "<b>Campus version:</b> come to DTU with Sirio on the 10:30 bus, see where the last years happened — the library, Skylab, the lakes on campus — and canteen lunch before the room opens.",
-    ],
-    checklist: [
-      "<b>Book the lunch</b> — every option above needs a call for a 16:00 table on a Monday; say it's a celebration and that you leave at 17:00.",
-      "<b>Tickets:</b> the Rejsebillet app works for the bus and the metro; 3-zone tickets cover Nørreport → airport, DTU is 3–4 zones. Buy before boarding.",
-      "<b>Luggage:</b> leave it at MEININGER in the morning — the airport route now runs through Central Station anyway (S-train/metro → bags → 13-min train to Terminal 3).",
-      "<b>Flowers</b> are normal at Danish defences; the cake is on you (no official reception for a Master's). Nobody dresses up beyond smart-casual.",
-      "<b>Museums are closed on Mondays</b> — no Plan B sightseeing needed anyway; the day is full.",
-    ],
-    mapPlaces: [
-      { place: "meininger-hotel", label: "H", kicker: "Hotel · bags here" },
-      { place: "round-tower", label: "T", kicker: "Family morning 10:00" },
-      { place: "dtu-building-101", label: "★", kicker: "Defence 13:00", route: true },
-      { place: "dtu-bus-stop", label: "B", kicker: "Bus 15E / 150S", route: true },
-      { place: "norreport", label: "N", kicker: "Bus → metro", route: true },
-      { place: "schonnemann", label: "A", kicker: "Celebration · option A", route: true },
-      { place: "aamanns-1921", label: "B", kicker: "Celebration · option B" },
-      { place: "cafe-sorgenfri", label: "C", kicker: "Celebration · option C" },
-      { place: "hviids-vinstue", label: "D", kicker: "Celebration · option D" },
-      { place: "kongens-nytorv", label: "M", kicker: "Metro M2 to airport", route: true },
-      { place: "airport", label: "✈", kicker: "Flight 19:00", route: true },
-    ],
-  },
 
   // ---------------------------------------------------------------- INFO ----
   info: {

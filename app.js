@@ -37,8 +37,8 @@
   };
 
   // ---------- router ----------
-  const views = { home: 'home', tours: 'tours', tour: 'tour', map: 'map-view', eat: 'eat', defence: 'defence', info: 'info' };
-  const tabOf = { home: 'home', defence: 'home', tours: 'tours', tour: 'tours', map: 'map', eat: 'eat', info: 'info' };
+  const views = { home: 'home', tours: 'tours', tour: 'tour', map: 'map-view', eat: 'eat', info: 'info' };
+  const tabOf = { home: 'home', tours: 'tours', tour: 'tours', map: 'map', eat: 'eat', info: 'info' };
   let lastView = null;
 
   function route() {
@@ -58,7 +58,6 @@
       case 'tour': renderTour(parts[1]); break;
       case 'map': showMap(q.f || 'all'); break;
       case 'eat': renderEat(parts[1] || 'rest'); break;
-      case 'defence': renderDefence(); break;
       case 'info': renderInfo(); break;
     }
     if (view !== 'map' && !(view === 'eat' && lastView === 'eat')) window.scrollTo(0, 0);
@@ -90,23 +89,14 @@
   // ---------- HOME ----------
   function renderHome() {
     const T = DATA.trip;
-    const days = T.days.map((d) => `<div class="day${d.star ? ' star' : ''}" style="--c:${C(d.color)}">
-        <a href="${d.href}"><div class="d">${esc(d.label)}</div><div class="t">${esc(d.title)}</div><div class="s">${esc(d.sub)}</div></a></div>`).join('');
     const cards = cityTours().map(tourCard).join('');
     const lyngby = lyngbyTours().map(tourCard).join('');
     $('#home').innerHTML = `
       <div class="wrap">
         <div class="hero"><div class="hero-grid"></div>
-          <div class="eyebrow"><span class="pill solid" style="--c:${C('lx')}">${esc(T.edition)}</span><span>${esc(T.dates)} · ${esc(T.who)}</span></div>
+          <div class="eyebrow"><span class="pill solid" style="--c:${C('lx')}">${esc(T.edition)}</span><span>${esc(T.dates)}</span></div>
           <h1>${esc(T.city)}<span class="dot">.</span></h1>
           <p class="sub">${T.intro}</p>
-          <div class="daystrip">${days}</div>
-        </div>
-        <div class="section">
-          <a class="callout" href="#/defence" style="display:block">
-            <div class="k">★ ${esc(T.bigDay.label)}</div>
-            <p><b>${esc(T.bigDay.title)}</b> — ${esc(T.bigDay.sub)} <span class="mono" style="color:var(--text)">→ open plan</span></p>
-          </a>
         </div>
         <div class="section">
           <div class="section-head"><h2>Pick a line</h2><a class="more" href="#/tours">All tours →</a></div>
@@ -284,9 +274,6 @@
     DATA.tours.forEach((t) => { layers[t.id] = tourLayer(t); if (!t.group) layers[t.id].addTo(layers.all); }); // "All lines" = the city; Lyngby lines have their own chips
     layers.eat = L.featureGroup(DATA.restaurants.map((r) => { const p = P(r.place); return pin(p, { color: 'eat', label: ICON.fork, glyph: true }).bindPopup(popup(Object.assign({}, p, { blurb: `${r.type} · ${r.priceLabel} · ${p.blurb || ''}` }), 'Eat · ' + r.area, 'eat')); }));
     layers.bars = L.featureGroup(DATA.bars.map((b) => { const p = P(b.place); return pin(p, { color: 'bar', label: '◍', glyph: true }).bindPopup(popup(Object.assign({}, p, { blurb: `${b.beer} · ${p.blurb || ''}` }), 'Bar · ' + b.area, 'bar')); }));
-    layers.mon = L.featureGroup(DATA.defence.mapPlaces.map((x, i) => { const p = P(x.place); return pin(p, { color: 'lx', label: x.label || String(i + 1) }).bindPopup(popup(p, 'Mon 28 · ' + x.kicker, 'lx')); }));
-    const pts = DATA.defence.mapPlaces.filter((x) => x.route).map((x) => { const p = P(x.place); return [p.lat, p.lng]; });
-    if (pts.length > 1) L.polyline(pts, { color: '#f1efe8', weight: 3, opacity: .6, dashArray: '6 8' }).addTo(layers.mon);
 
     $('#locate').addEventListener('click', locateMe);
   }
@@ -294,7 +281,7 @@
   function chipsHtml(active) {
     const items = [{ id: 'all', name: 'All lines', color: 'text' }]
       .concat(DATA.tours.map((t) => ({ id: t.id, name: `${t.num} · ${t.short}`, color: t.id })))
-      .concat([{ id: 'eat', name: 'Eat', color: 'eat' }, { id: 'bars', name: 'Bars', color: 'bar' }, { id: 'mon', name: 'Mon 28', color: 'lx' }]);
+      .concat([{ id: 'eat', name: 'Eat', color: 'eat' }, { id: 'bars', name: 'Bars', color: 'bar' }]);
     return items.map((c) => `<a class="chip${c.id === active ? ' active' : ''}" href="#/map?f=${c.id}" style="--c:${C(c.color)}"><i></i>${esc(c.name)}</a>`).join('');
   }
 
@@ -400,31 +387,6 @@
   function renderFood() {
     $('#eat-body').innerHTML = `<div class="count">${DATA.food101.length} things worth ordering at least once</div>
       <div class="foodgrid">${DATA.food101.map((f) => `<div class="food"><h4>${esc(f.name)} <span class="muted" style="font-weight:400;font-size:13px">${esc(f.say || '')}</span></h4><p>${f.what}</p><div class="where">→ ${esc(f.where)}</div></div>`).join('')}</div>`;
-  }
-
-  // ---------- DEFENCE DAY ----------
-  function renderDefence() {
-    const D = DATA.defence;
-    const tl = D.timeline.map((x) => `<div class="tl${x.hi ? ' hi' : ''}"><div class="time">${esc(x.time)}</div><div class="body"><h3>${esc(x.title)}</h3><p>${x.text}</p>${x.facts ? `<div class="facts">${x.facts}</div>` : ''}</div></div>`).join('');
-    const opts = D.options.map((o) => { const p = P(o.place); return `<div class="option${o.rec ? ' rec' : ''}" style="--c:${C('lx')}">
-        <div class="k"><span class="pill">${esc(o.tag)}</span>${o.rec ? '<span class="pill" style="border-color:var(--lx);color:var(--lx)">Recommended</span>' : ''}</div>
-        <h4>${esc(p.name)}</h4><p>${o.text}</p>
-        <div class="facts"><span>${esc(o.price)}</span><span>${esc(o.hours)}</span><span>${esc(o.toAirport)}</span><a href="${gmPlace(p)}" target="_blank" rel="noopener">Google Maps</a>${o.book ? `<a href="${o.book}" target="_blank" rel="noopener">Book</a>` : ''}</div></div>`; }).join('');
-    $('#defence').innerHTML = `<div class="wrap">
-      <div class="tour-head" style="--c:${C('lx')}">
-        <a class="back" href="#/">← Home</a>
-        <div class="line-id"><span class="badge">★</span><span class="eyebrow" style="color:var(--c)">${esc(D.kicker)}</span></div>
-        <h1>${esc(D.title)}</h1>
-        <p class="tagline">${D.intro}</p>
-        <div class="btnrow" style="margin-top:14px"><a class="btn ghost" href="#/map?f=mon">${ICON.pin} Show the day on the map</a></div>
-      </div>
-      <div class="section"><div class="section-head"><h2>Timeline</h2><span class="more">defence 13:00 · flight 19:00</span></div><div class="timeline">${tl}</div></div>
-      <div class="section"><div class="section-head"><h2>Where to celebrate</h2><span class="more">late lunch, 15:30–17:00</span></div>
-        <p class="muted" style="margin:-6px 0 6px;font-size:14.5px">${D.celebrateIntro}</p>
-        <div class="options">${opts}</div></div>
-      <div class="section"><div class="section-head"><h2>Morning options</h2><span class="more">before the defence</span></div><ul class="tips">${D.morning.map((m) => `<li>${m}</li>`).join('')}</ul></div>
-      <div class="section"><div class="section-head"><h2>Don't forget</h2></div><ul class="tips">${D.checklist.map((m) => `<li>${m}</li>`).join('')}</ul></div>
-    </div>`;
   }
 
   // ---------- INFO ----------
